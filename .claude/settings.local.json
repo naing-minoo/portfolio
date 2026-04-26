@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Skill(claude-api)",
+      "Read(//Users/naing/Development/**)",
+      "Bash(npx create-next-app@latest webapp --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --no-git)"
+    ]
+  }
+}
