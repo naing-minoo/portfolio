@@ -147,7 +147,7 @@ export default function Hero() {
           >
             <span className="relative z-10 flex items-center gap-2">
               <TrendingUp size={18} />
-              View Case Studies
+              View Projects
             </span>
             <motion.div
               className="absolute inset-0 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600"

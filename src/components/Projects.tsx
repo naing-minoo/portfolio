@@ -159,7 +159,7 @@ export default function Projects() {
           className="flex items-center gap-3 mb-4"
         >
           <div className="w-8 h-px bg-pink-500" />
-          <span className="text-sm font-semibold text-pink-500 tracking-widest uppercase">Case Studies</span>
+          <span className="text-sm font-semibold text-pink-500 tracking-widest uppercase">Projects</span>
         </motion.div>
 
         <motion.h2
@@ -247,7 +247,7 @@ export default function Projects() {
                 {/* Read more hint */}
                 <div className="mt-5 flex items-center gap-1 text-xs font-semibold text-indigo-500 group-hover:gap-2 transition-all">
                   <ChevronRight size={14} />
-                  Read full case study
+                  View project
                 </div>
               </div>
             </motion.div>
