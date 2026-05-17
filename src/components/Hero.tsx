@@ -178,7 +178,7 @@ export default function Hero() {
           {[
             { num: '7+', label: 'Years Experience' },
             { num: '3', label: 'Industries' },
-            { num: '1K+', label: 'IDs Verified' },
+            { num: '8+', label: 'Products Launched' },
           ].map((stat, i) => (
             <motion.div
               key={stat.label}
