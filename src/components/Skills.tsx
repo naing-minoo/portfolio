@@ -31,9 +31,9 @@ const techSkills = [
 ]
 
 const tools = [
-  'Jira', 'Azure DevOps', 'Confluence', 'Miro', 'Figma',
+  'Jira', 'Azure DevOps', 'Confluence', 'Miro',
   'Power Automate', 'MuleSoft', 'Backbase', 'Postman',
-  'GitHub', 'Tableau', 'SQL', 'Lucidchart', 'Slack', 'SharePoint', 'Teams',
+  'GitHub', 'SQL', 'Slack', 'SharePoint', 'Teams',
 ]
 
 type Level = 'Expert' | 'Advanced' | 'Proficient'
