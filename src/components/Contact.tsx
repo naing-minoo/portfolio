@@ -21,9 +21,9 @@ const socialLinks = [
   },
   {
     name: 'Location',
-    handle: 'Bromley, United Kingdom',
+    handle: 'Cambridge, United Kingdom',
     icon: Code2,
-    href: 'https://www.google.com/maps/search/Bromley,+United+Kingdom',
+    href: 'https://www.google.com/maps/search/Cambridge,+United+Kingdom',
     color: 'hover:text-green-600 hover:border-green-600/40 hover:bg-green-600/5',
   },
 ]
