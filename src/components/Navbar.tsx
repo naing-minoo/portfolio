@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useSyncExternalStore } from 'react'
 import { useTheme } from 'next-themes'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Sun, Moon, Menu, X } from 'lucide-react'
@@ -14,13 +14,12 @@ const navLinks = [
 ]
 
 export default function Navbar() {
-  const { theme, setTheme } = useTheme()
+  const { resolvedTheme, setTheme } = useTheme()
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
-  const [mounted, setMounted] = useState(false)
+  const mounted = useSyncExternalStore(() => () => {}, () => true, () => false)
 
   useEffect(() => {
-    setMounted(true)
     const onScroll = () => setScrolled(window.scrollY > 40)
     window.addEventListener('scroll', onScroll)
     return () => window.removeEventListener('scroll', onScroll)
@@ -66,7 +65,7 @@ export default function Navbar() {
         <div className="flex items-center gap-3">
           {mounted && (
             <motion.button
-              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
               className="w-9 h-9 rounded-full flex items-center justify-center bg-neutral-100 dark:bg-neutral-900 hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors"
               whileHover={{ scale: 1.1, rotate: 15 }}
               whileTap={{ scale: 0.9 }}
@@ -74,13 +73,13 @@ export default function Navbar() {
             >
               <AnimatePresence mode="wait">
                 <motion.div
-                  key={theme}
+                  key={resolvedTheme}
                   initial={{ rotate: -90, opacity: 0, scale: 0.5 }}
                   animate={{ rotate: 0, opacity: 1, scale: 1 }}
                   exit={{ rotate: 90, opacity: 0, scale: 0.5 }}
                   transition={{ duration: 0.2 }}
                 >
-                  {theme === 'dark' ? (
+                  {resolvedTheme === 'dark' ? (
                     <Sun size={16} className="text-yellow-400" />
                   ) : (
                     <Moon size={16} className="text-indigo-600" />
@@ -103,6 +102,9 @@ export default function Navbar() {
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="md:hidden w-9 h-9 rounded-full flex items-center justify-center bg-neutral-100 dark:bg-neutral-900"
+            aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-navigation"
           >
             {menuOpen ? <X size={18} /> : <Menu size={18} />}
           </button>
@@ -119,7 +121,7 @@ export default function Navbar() {
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="md:hidden overflow-hidden bg-white/95 dark:bg-black/95 backdrop-blur-xl border-t border-neutral-200 dark:border-neutral-800"
           >
-            <ul className="px-6 py-4 flex flex-col gap-1">
+            <ul id="mobile-navigation" className="px-6 py-4 flex flex-col gap-1">
               {navLinks.map((link, i) => (
                 <motion.li
                   key={link.label}

@@ -1,11 +1,8 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from '@/components/ThemeProvider'
 import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
-
-const inter = Inter({ subsets: ['latin'] })
 
 const siteUrl = 'https://portfolio-naingminoo.vercel.app'
 
@@ -35,9 +32,10 @@ export const metadata: Metadata = {
     description:
       'Naing Min Oo is a Senior PM & Technical Delivery Manager with 7+ years across fintech, prop-tech, and consulting.',
     siteName: 'Naing Min Oo',
+    locale: 'en_GB',
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: 'Naing Min Oo — Senior Product Manager',
     description:
       'Senior PM & Technical Delivery Manager with 7+ years across fintech, prop-tech, and consulting.',
@@ -46,6 +44,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: siteUrl,
   },
+  manifest: '/manifest.webmanifest',
   robots: {
     index: true,
     follow: true,
@@ -87,7 +86,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className={`${inter.className} grain antialiased`}>
+      <body className="grain antialiased">
         <ThemeProvider>{children}</ThemeProvider>
         <Analytics />
         <SpeedInsights />

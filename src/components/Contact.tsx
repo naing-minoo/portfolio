@@ -116,7 +116,7 @@ export default function Contact() {
           transition={{ duration: 0.7, delay: 0.1 }}
           className="text-5xl md:text-6xl font-black tracking-tight mb-4 leading-tight"
         >
-          Let's build something{' '}
+          Let&apos;s build something{' '}
           <span className="gradient-text">remarkable</span>{' '}
           together.
         </motion.h2>
@@ -213,7 +213,7 @@ export default function Contact() {
                   </motion.div>
                   <h3 className="text-2xl font-black mb-2">Message sent! 🎉</h3>
                   <p className="text-neutral-500 dark:text-neutral-400">
-                    I'll get back to you within 24 hours.
+                    I&apos;ll get back to you within 24 hours.
                   </p>
                   <button
                     onClick={() => { setSubmitted(false); setFormState({ name: '', email: '', message: '', subject: '' }) }}
@@ -293,7 +293,7 @@ export default function Contact() {
                   </div>
 
                   {error && (
-                    <p className="text-sm text-red-500 font-medium">{error}</p>
+                    <p role="alert" className="text-sm text-red-500 font-medium">{error}</p>
                   )}
 
                   <motion.button

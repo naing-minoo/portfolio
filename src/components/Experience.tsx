@@ -2,7 +2,7 @@
 
 import { useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { Building2, ChevronDown, ChevronUp, ExternalLink } from 'lucide-react'
+import { ChevronDown } from 'lucide-react'
 
 const experiences = [
   {
@@ -244,7 +244,7 @@ export default function Experience() {
           transition={{ duration: 0.7, delay: 0.1 }}
           className="text-5xl md:text-6xl font-black tracking-tight mb-4 leading-tight"
         >
-          Where I've{' '}
+          Where I&apos;ve{' '}
           <span className="gradient-text">made things</span>{' '}
           happen.
         </motion.h2>
@@ -275,7 +275,7 @@ export default function Experience() {
             <span className="text-2xl">🎓</span>
             <div>
               <h3 className="font-black text-neutral-900 dark:text-white">
-                Queen's University Belfast · MBA
+                Queen&apos;s University Belfast · MBA
               </h3>
               <p className="text-sm text-neutral-500 dark:text-neutral-400">
                 Master of Business Administration · 2020 – 2021 · Belfast, UK
@@ -296,7 +296,7 @@ export default function Experience() {
                 University of Canberra · B.Eng Software Engineering
               </h3>
               <p className="text-sm text-neutral-500 dark:text-neutral-400">
-                Bachelor of Software Engineering · Canberra, Australia · Dean's Excellence Award
+                Bachelor of Software Engineering · Canberra, Australia · Dean&apos;s Excellence Award
               </p>
             </div>
           </div>

@@ -1,7 +1,3 @@
-'use client'
-
-import { motion } from 'framer-motion'
-
 export default function Footer() {
   return (
     <footer className="py-10 border-t border-neutral-200 dark:border-neutral-800">

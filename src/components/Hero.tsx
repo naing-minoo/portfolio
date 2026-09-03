@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import { ArrowDown, Sparkles, Code2, TrendingUp } from 'lucide-react'
 
 const roles = [
@@ -27,8 +27,10 @@ function TypewriterText() {
     } else if (deleting && displayed.length > 0) {
       timeout = setTimeout(() => setDisplayed(displayed.slice(0, -1)), 45)
     } else if (deleting && displayed.length === 0) {
-      setDeleting(false)
-      setIndex((i) => (i + 1) % roles.length)
+      timeout = setTimeout(() => {
+        setDeleting(false)
+        setIndex((i) => (i + 1) % roles.length)
+      }, 0)
     }
 
     return () => clearTimeout(timeout)
@@ -47,13 +49,6 @@ export default function Hero() {
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
   const y = useTransform(scrollYProgress, [0, 1], ['0%', '40%'])
   const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0])
-
-  const floatingVariants = {
-    animate: {
-      y: [0, -12, 0],
-      transition: { duration: 4, repeat: Infinity, ease: 'easeInOut' },
-    },
-  }
 
   return (
     <section

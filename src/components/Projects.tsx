@@ -91,6 +91,9 @@ function ProjectModal({ project, onClose }: { project: typeof projects[0]; onClo
         exit={{ scale: 0.9, opacity: 0, y: 20 }}
         transition={{ type: 'spring', stiffness: 300, damping: 30 }}
         onClick={(e) => e.stopPropagation()}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="project-dialog-title"
         className="relative z-10 w-full max-w-2xl bg-white dark:bg-neutral-900 rounded-3xl overflow-hidden shadow-2xl"
       >
         {/* Header */}
@@ -98,9 +101,10 @@ function ProjectModal({ project, onClose }: { project: typeof projects[0]; onClo
           <div className="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2" />
           <div className="text-4xl mb-3">{project.emoji}</div>
           <div className="text-white/70 text-sm font-semibold mb-1">{project.subtitle} · {project.year}</div>
-          <h3 className="text-2xl font-black text-white">{project.title}</h3>
+          <h3 id="project-dialog-title" className="text-2xl font-black text-white">{project.title}</h3>
           <button
             onClick={onClose}
+            aria-label="Close project details"
             className="absolute top-6 right-6 w-9 h-9 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center text-white transition-colors"
           >
             <X size={18} />
@@ -112,7 +116,6 @@ function ProjectModal({ project, onClose }: { project: typeof projects[0]; onClo
           {/* Metrics */}
           <div className="grid grid-cols-3 gap-4 mb-6">
             {project.metrics.map((m) => {
-              const Icon = m.icon
               return (
                 <div key={m.label} className="text-center p-3 rounded-xl bg-neutral-50 dark:bg-neutral-800">
                   <div className="text-xl font-black gradient-text">{m.value}</div>
@@ -168,7 +171,7 @@ export default function Projects() {
           transition={{ duration: 0.7, delay: 0.1 }}
           className="text-5xl md:text-6xl font-black tracking-tight mb-4 leading-tight"
         >
-          Products I've{' '}
+          Products I&apos;ve{' '}
           <span className="gradient-text">shipped</span>{' '}
           & scaled.
         </motion.h2>
@@ -191,6 +194,15 @@ export default function Projects() {
               transition={{ duration: 0.6, delay: 0.1 + i * 0.1 }}
               whileHover={{ y: -6 }}
               onClick={() => setSelected(project)}
+              onKeyDown={(event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                  event.preventDefault()
+                  setSelected(project)
+                }
+              }}
+              role="button"
+              tabIndex={0}
+              aria-label={`View project: ${project.title}`}
               className="group relative bg-white dark:bg-neutral-900 rounded-3xl overflow-hidden border border-neutral-200 dark:border-neutral-800 hover:border-indigo-500/40 transition-all duration-300 cursor-pointer shadow-sm hover:shadow-xl hover:shadow-indigo-500/10"
             >
               {/* Color bar */}
@@ -222,7 +234,6 @@ export default function Projects() {
                 {/* Metrics */}
                 <div className="grid grid-cols-3 gap-3 mb-6">
                   {project.metrics.map((m) => {
-                    const Icon = m.icon
                     return (
                       <div key={m.label} className="text-center p-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-800">
                         <div className="text-base font-black gradient-text">{m.value}</div>

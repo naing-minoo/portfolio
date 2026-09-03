@@ -24,6 +24,11 @@ html {
   scroll-behavior: smooth;
 }
 
+:focus-visible {
+  outline: 3px solid #818cf8;
+  outline-offset: 3px;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
@@ -75,6 +80,21 @@ body {
   70% { transform: translate(0%, 15%); }
   80% { transform: translate(3%, 35%); }
   90% { transform: translate(-10%, 10%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 /* Gradient text */

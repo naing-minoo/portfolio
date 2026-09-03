@@ -93,6 +93,8 @@ function FunFactsCarousel({ isInView }: { isInView: boolean }) {
               <button
                 key={i}
                 onClick={() => setIndex(i)}
+                aria-label={`Show fun fact ${i + 1}`}
+                aria-current={i === index}
                 className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
                   i === index ? 'bg-white w-4' : 'bg-white/40'
                 }`}
@@ -170,7 +172,7 @@ export default function About() {
                 product decision, not just fluency.
               </p>
               <p>
-                Over 7+ years across fintech, prop-tech, and enterprise consulting, I've cut loan processing from{' '}
+                Over 7+ years across fintech, prop-tech, and enterprise consulting, I&apos;ve cut loan processing from{' '}
                 <span className="text-neutral-900 dark:text-white font-semibold">2 weeks to 3 minutes</span>, launched
                 identity verification hitting 1,000+ checks within months, and led the{' '}
                 <span className="text-neutral-900 dark:text-white font-semibold">first-ever BizTalk to MuleSoft
